@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://magias5e.com.br/sitemap.xml
