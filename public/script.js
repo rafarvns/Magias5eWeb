@@ -52,10 +52,14 @@ tabBtns.forEach(btn => {
 // Load Data
 async function loadSpells() {
     try {
-        const response = await fetch('spells.json');
-        allSpells = await response.json();
-        currentFilteredSpells = allSpells;
-        renderSpells(allSpells);
+        // Agora usamos os dados embarcados no spellsData.js
+        if (typeof SPELLS_DATA !== 'undefined') {
+            allSpells = SPELLS_DATA;
+            currentFilteredSpells = allSpells;
+            renderSpells(allSpells);
+        } else {
+            throw new Error('SPELLS_DATA não encontrado');
+        }
     } catch (error) {
         console.error('Erro ao carregar magias:', error);
         spellGrid.innerHTML = `<div class="error">Erro ao carregar magias. Verifique o console.</div>`;
