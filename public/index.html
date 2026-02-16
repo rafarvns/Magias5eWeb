@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grimório D&D 5E</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Grimório D&D 5E</h1>
+            <p>Lista completa de magias para a 5ª Edição</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="grid">Grimório</button>
+            <button class="tab-btn" data-tab="list">Modo Impressão (A4)</button>
+            <button class="tab-btn" data-tab="cards">Cartas (A7)</button>
+        </div>
+
+        <div class="filters-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar magia...">
+            </div>
+
+            <div class="selectors">
+                <select id="classFilter">
+                    <option value="">Todas as Classes</option>
+                    <option value="Bardo">Bardo</option>
+                    <option value="Bruxo">Bruxo</option>
+                    <option value="Clérigo">Clérigo</option>
+                    <option value="Druida">Druida</option>
+                    <option value="Feiticeiro">Feiticeiro</option>
+                    <option value="Mago">Mago</option>
+                    <option value="Paladino">Paladino</option>
+                    <option value="Patrulheiro">Patrulheiro</option>
+                </select>
+
+                <select id="levelFilter">
+                    <option value="">Todos os Níveis</option>
+                    <option value="0">Truque (Nível 0)</option>
+                    <option value="1">Nível 1</option>
+                    <option value="2">Nível 2</option>
+                    <option value="3">Nível 3</option>
+                    <option value="4">Nível 4</option>
+                    <option value="5">Nível 5</option>
+                    <option value="6">Nível 6</option>
+                    <option value="7">Nível 7</option>
+                    <option value="8">Nível 8</option>
+                    <option value="9">Nível 9</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <div class="tab-content active" id="gridTab">
+        <main id="spellGrid" class="spell-grid">
+            <!-- Spells will be loaded here -->
+            <div class="loader">Invocando magias...</div>
+        </main>
+    </div>
+
+    <div class="tab-content" id="listTab">
+        <div class="list-actions no-print">
+            <button id="printPreviewBtn" class="action-btn">Visualizar Impressão (A4)</button>
+        </div>
+        <main id="spellList" class="print-view hidden">
+            <!-- Full spells will be loaded here dynamically during preview -->
+        </main>
+    </div>
+
+    <div class="tab-content" id="cardsTab">
+        <div class="list-actions no-print">
+            <button id="cardsPreviewBtn" class="action-btn">Gerar Cartas (A7)</button>
+        </div>
+        <main id="spellCards" class="print-view hidden">
+            <!-- Cards will be loaded here dynamically -->
+        </main>
+    </div>
+
+    <!-- Modal de Pré-visualização de Impressão -->
+    <div id="printPreviewModal" class="print-preview-modal hidden">
+        <div class="preview-header no-print">
+            <h2>Pré-visualização de Impressão</h2>
+            <div class="preview-actions">
+                <button id="closePreviewBtn" class="secondary-btn">Fechar</button>
+                <button id="confirmPrintBtn" class="primary-btn">Imprimir Agora</button>
+            </div>
+        </div>
+        <div id="printPreviewContent" class="preview-content">
+            <!-- Páginas serão geradas aqui -->
+        </div>
+    </div>
+
+    <!-- Modal de Pré-visualização de Cartas -->
+    <div id="cardsPreviewModal" class="print-preview-modal hidden">
+        <div class="preview-header no-print">
+            <h2>Pré-visualização de Cartas (A7)</h2>
+            <div class="preview-actions">
+                <button id="closeCardsPreviewBtn" class="secondary-btn">Fechar</button>
+                <button id="confirmCardsPrintBtn" class="primary-btn" style="display:none;">Imprimir Agora</button>
+                <button id="printA7Btn" class="primary-btn">Papel A7 (1 Carta)</button>
+                <button id="printA4Btn" class="primary-btn">Papel A4 (4 Cartas)</button>
+            </div>
+        </div>
+        <div id="cardsPreviewContent" class="preview-content">
+            <!-- Cartas serão geradas aqui -->
+        </div>
+    </div>
+
+    <div id="spellModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Grimório D&D 5E &copy; Ferramenta de Referência de Magias</p>
+            <div class="credits">
+                <p>Desenvolvido como um recurso independente para a comunidade de RPG.</p>
+                <p>Traduções por AlanVenic Gonçalves e Grupo Material RPG via <a href="http://www.bibliotecaelfica.com/"
+                        target="_blank">Biblioteca Élfica</a>.</p>
+                <p>Inspirado no trabalho de <a href="https://avribacki.gitlab.io/magias5e/"
+                        target="_blank">avribacki</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
